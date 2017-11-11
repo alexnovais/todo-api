@@ -26,7 +26,7 @@ app.get('/todos', function (req, res) {
 
 // GET /todos/:id
 app.get('/todos/:id', function (req, res) {
-    var todoId = req.params.id;
+    var todoId = parseInt(req.params.id, 10);
     var matchedTodo;
 
     todos.forEach(function (todo) {
@@ -41,7 +41,6 @@ app.get('/todos/:id', function (req, res) {
         res.status(404).send();
     }
 
-    res.send('Asking for todo with id of ' + req.params.id);
 });
 
 app.listen(PORT, function () {
